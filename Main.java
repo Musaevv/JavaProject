@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
-public class GUI implements ActionListener {
+public class Main implements ActionListener {
 
     static JLabel color;
     static ArrayList<Color> colors;
