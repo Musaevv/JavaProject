@@ -19,11 +19,17 @@ public class GUI implements ActionListener {
     static Random random = new Random(new Date().getTime());
     static Timer timer;
 
-    static void initColors() {
+   static void initColors() {
         colors = new ArrayList<>();
         colors.add(Color.WHITE);
         colors.add(Color.BLUE);
         colors.add(Color.ORANGE);
+        colors.add(Color.BLACK);
+        colors.add(Color.GRAY);
+        colors.add(Color.YELLOW);
+        colors.add(Color.RED);
+        colors.add(Color.GREEN);
+        colors.add(Color.PINK);
     }
 
     static void initWords() {
@@ -31,6 +37,13 @@ public class GUI implements ActionListener {
         words.add("White");
         words.add("Blue");
         words.add("Orange");
+        words.add("Black");
+        words.add("Gray");
+        words.add("Yellow");
+        words.add("Red");
+        words.add("Green");
+        words.add("Pink");
+        words.add("Purple");
     }
 
     public static void main(String[] args) {
