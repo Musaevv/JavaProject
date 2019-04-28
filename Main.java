@@ -130,6 +130,24 @@ public class Main implements ActionListener {
         } catch (Exception ignored) {
 
         }
+        private static void checkAnswer() {
+        String usersColor = textField.getText().toLowerCase();
+        System.out.println(usersColor + " " + chosenColor);
+        if (chosenColor == Color.WHITE && usersColor.equals("white") ||
+                chosenColor == Color.BLACK && usersColor.equals("black") ||
+                chosenColor == Color.RED && usersColor.equals("red") ||
+                chosenColor == Color.ORANGE && usersColor.equals("orange") ||
+                chosenColor == Color.GRAY && usersColor.equals("gray") ||
+                chosenColor == Color.GREEN && usersColor.equals("green") ||
+                chosenColor == Color.BLUE && usersColor.equals("blue") ||
+                chosenColor == Color.YELLOW && usersColor.equals("yellow") ||
+                chosenColor == Color.PINK && usersColor.equals("pink")){
+            score ++;
+        }
+
+        start.setText("Score " + score);
+        textField.setText("");
+        
         timer = new Timer(3000, e -> nextColor());
         timer.start();
     }
