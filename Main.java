@@ -14,10 +14,14 @@ import java.util.Random;
 public class Main implements ActionListener {
 
     static JLabel color;
+    static JTextField textField;
     static ArrayList<Color> colors;
     static ArrayList<String> words;
     static Random random = new Random(new Date().getTime());
     static Timer timer;
+    static Color chosenColor;
+    static int score = 0;
+    static JLabel start;
 
    static void initColors() {
         colors = new ArrayList<>();
@@ -149,8 +153,8 @@ public class Main implements ActionListener {
         start.setText("Score " + score);
         textField.setText("");
         
-        timer = new Timer(3000, e -> nextColor());
-        timer.start();
+        ///timer = new Timer(3000, e -> nextColor());
+        ///timer.start();
     }
 
     @Override
