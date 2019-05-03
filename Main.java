@@ -1,12 +1,9 @@
-package com.company;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
@@ -17,13 +14,13 @@ public class Main implements ActionListener {
     static JTextField textField;
     static ArrayList<Color> colors;
     static ArrayList<String> words;
-    static Random random = new Random(new Date().getTime());
-    static Timer timer;
     static Color chosenColor;
     static int score = 0;
     static JLabel start;
+    static Random random = new Random(new Date().getTime());
+    static Timer timer;
 
-   static void initColors() {
+    static void initColors() {
         colors = new ArrayList<>();
         colors.add(Color.WHITE);
         colors.add(Color.BLUE);
@@ -55,7 +52,6 @@ public class Main implements ActionListener {
         initWords();
 
         JFrame frame = new JFrame();
-
         JPanel panel = new JPanel();
         panel.setBackground(Color.DARK_GRAY);
         frame.getContentPane().add(panel);
@@ -66,7 +62,7 @@ public class Main implements ActionListener {
         label.setFont(new Font("Serfis",Font.BOLD,14));
         label.setForeground(Color.WHITE);
         panel.add(label);
-        JLabel start = new JLabel(" Press enter to start");
+        start = new JLabel(" Press enter to start");
         start.setHorizontalAlignment(SwingConstants.CENTER);
         start.setPreferredSize(new Dimension(400,25));
         start.setFont(new Font("Start",Font.ITALIC,15));
@@ -79,7 +75,7 @@ public class Main implements ActionListener {
         time.setForeground(Color.white);
         panel.add(time);
 
-        JTextField textField = new JTextField();
+        textField = new JTextField();
         textField.setPreferredSize(new Dimension(300, 20));
         textField.addKeyListener(new KeyListener() {
             @Override
@@ -91,6 +87,7 @@ public class Main implements ActionListener {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     checkAnswer();
+                    color.setVisible(true);
                     nextColor();
                 }
             }
@@ -107,7 +104,7 @@ public class Main implements ActionListener {
         color.setFont(new Font("ColorDisplayer", Font.BOLD, 50));
         color.setHorizontalAlignment(SwingConstants.CENTER);
         color.setVerticalAlignment(SwingConstants.CENTER);
-        color.setVisible(true);
+        color.setVisible(false);
         panel.add(color);
 
 //setting the frame size
@@ -126,8 +123,9 @@ public class Main implements ActionListener {
     }
 
     public static void nextColor() {
-        color.setText(words.get(random.nextInt(3)));
-        color.setForeground(colors.get(random.nextInt(3)));
+        color.setText(words.get(random.nextInt(10)));
+        chosenColor = colors.get(random.nextInt(9));
+        color.setForeground(chosenColor);
         try {
             if (timer.isRunning()) {
                 timer.stop();
@@ -135,7 +133,9 @@ public class Main implements ActionListener {
         } catch (Exception ignored) {
 
         }
-        private static void checkAnswer() {
+    }
+
+    private static void checkAnswer() {
         String usersColor = textField.getText().toLowerCase();
         System.out.println(usersColor + " " + chosenColor);
         if (chosenColor == Color.WHITE && usersColor.equals("white") ||
@@ -152,9 +152,6 @@ public class Main implements ActionListener {
 
         start.setText("Score " + score);
         textField.setText("");
-        
-        ///timer = new Timer(3000, e -> nextColor());
-        ///timer.start();
     }
 
     @Override
