@@ -20,10 +20,7 @@ Proposed activities | Power Point Presentation
 Estimative budget | 0 $
 Proposed partners | None
 Git repository link | https://github.com/Musaevv/JavaProject
-Contact person | Name: AdiL
-               |  Surname : Musaev
-               |  email: adil.musaev@iaau.edu.kg
-               |  mobile: +996703003120 
+Contact person | Name: AdiL, Surname : Musaev, email: adil.musaev@iaau.edu.kg, mobile: +996703003120 
                               
 
 Software Features List  :
