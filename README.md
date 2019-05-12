@@ -1,1 +1,1 @@
-# JavaProject
+# Colour Game
