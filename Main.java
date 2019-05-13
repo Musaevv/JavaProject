@@ -74,31 +74,6 @@ public class Main implements ActionListener {
         time.setFont(new Font("Time",Font.ITALIC,15));
         time.setForeground(Color.white);
         panel.add(time);
-
-        textField = new JTextField();
-        textField.setPreferredSize(new Dimension(300, 20));
-        textField.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    checkAnswer();
-                    color.setVisible(true);
-                    nextColor();
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-
-            }
-        });
-        panel.add(textField);
-
         color = new JLabel("Red") ;
         color.setPreferredSize(new Dimension(400, 200));
         color.setFont(new Font("ColorDisplayer", Font.BOLD, 50));
@@ -106,6 +81,24 @@ public class Main implements ActionListener {
         color.setVerticalAlignment(SwingConstants.CENTER);
         color.setVisible(false);
         panel.add(color);
+
+        textField = new JTextField();
+        textField.setPreferredSize(new Dimension(300, 20));
+        textField.addKeyListener(new KeyListener() {
+
+            public void keyTyped(KeyEvent e) {
+            }
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    checkAnswer();
+                    color.setVisible(true);
+                    nextColor();
+                }
+            }
+            public void keyReleased(KeyEvent e) {}
+        });
+        panel.add(textField);
+
 
 //setting the frame size
         frame.setSize(new Dimension(600, 400));
@@ -118,8 +111,6 @@ public class Main implements ActionListener {
 //Disable resize
         frame.setResizable(false);
         frame.setVisible(true);
-// write your code here
-
     }
 
     public static void nextColor() {
