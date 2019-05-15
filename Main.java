@@ -130,7 +130,7 @@ public class Main extends JFrame implements ActionListener {
             mistake++;
         }
         start.setText("Right: " + right + "" +
-                "      Misatakes: " + mistake);
+                "      Mistakes: " + mistake);
 
         textField.setText("");
     }
