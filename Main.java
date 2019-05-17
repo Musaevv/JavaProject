@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Main implements ActionListener {
+public class Main extends JFrame implements ActionListener {
 
     static JLabel color;
     static JTextField textField;
@@ -46,14 +46,13 @@ public class Main implements ActionListener {
         words.add("Purple");
     }
 
-    public static void main(String[] args) {
+    public void start() {
         initColors();
         initWords();
 
-        JFrame frame = new JFrame();
         JPanel panel = new JPanel();
         panel.setBackground(Color.DARK_GRAY);
-        frame.getContentPane().add(panel);
+        getContentPane().add(panel);
 
         JLabel label = new JLabel(" Type in the colour of the words, and not the word text!");
         label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -93,23 +92,27 @@ public class Main implements ActionListener {
         });
         panel.add(textField);
         //setting the frame size
-        frame.setSize(new Dimension(600, 400));
+        setSize(new Dimension(600, 400));
         //set the start position
-        frame.setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
         //set a default close action
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //set a title
-        frame.setTitle("ColourGame");
+        setTitle("ColourGame");
         //Disable resize
-        frame.setVisible(true);
+        setVisible(true);
     }
 
+    public static void main(String[] args) {
+        new Main().start();
+    }
 
     public static void nextColor() {
         color.setText(words.get(random.nextInt(10)));
         chosenColor = colors.get(random.nextInt(9));
         color.setForeground(chosenColor);
     }
+
     private static void checkAnswer() {
         String usersColor = textField.getText().toLowerCase();
         System.out.println(usersColor + " " + chosenColor);
@@ -123,17 +126,16 @@ public class Main implements ActionListener {
                 chosenColor == Color.YELLOW && usersColor.equals("yellow") ||
                 chosenColor == Color.PINK && usersColor.equals("pink")){
             right ++;
-
-        }
-            else { if(mistake>4){
+        }else {
+            if (mistake>4){
                 mistake=0;
                 right=0;
-        } else {
-                mistake++; 
+            }else {
+                mistake++;
             }
         }
         start.setText("Right: " + right + "" +
-                "      Misatake: " + mistake);
+                "      Mistakes: " + mistake);
 
         textField.setText("");
     }
